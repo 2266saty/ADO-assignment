@@ -1,0 +1,42 @@
+create database footballLeague;
+----------------------------------
+create table FootballLeague(
+MatchId int primary key,
+TeamName1 varchar(50),
+TeamName2 varchar(50),
+MatchStatus varchar(50),
+WinningTeam varchar(50),
+Points int
+);
+-----------------------------------
+select *from FootballLeague;
+-----------------------------------
+insert into FootballLeague
+Values(1001,'Italy','France','Win','France',4);
+insert into FootballLeague
+Values(1002,'Brazil','Portugal','Draw',Null,2);
+insert into FootballLeague
+Values(1003,'England','Japan','Win','England',4);
+insert into FootballLeague
+Values(1004,'USA','Russia','Win','Russia',4);
+insert into FootballLeague
+Values(1005,'Portugal','Italy','Draw',Null,2);
+insert into FootballLeague
+Values(1006,'Brazil','France','Win','Brazil',4);
+insert into FootballLeague
+Values(1007,'England','Russia','Win','Russia',4);
+insert into FootballLeague
+Values(1008,'Japan','USA','Draw',Null,2);
+-----------------------------------
+create proc Sp_FootballLeague_add
+@MatchId int,
+@TeamName1 varchar(50),
+@TeamName2 varchar(50),
+@MStatus varchar(50),
+@WinningTeam varchar(50),
+@Points int
+as 
+begin
+insert into FootballLeague
+Values(@MatchId,@TeamName1,@TeamName2,@MStatus,@WinningTeam,@Points)
+end
